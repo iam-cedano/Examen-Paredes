@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-calificacion',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './calificacion.component.css'
 })
 export class CalificacionComponent {
-
+  public matricula = signal<string>('');
+  public nombre = signal<string>('');
+  public corte1 = signal<number>(0);
+  public corte2 = signal<number>(0);
+  public corte3 = signal<number>(0);
 }
