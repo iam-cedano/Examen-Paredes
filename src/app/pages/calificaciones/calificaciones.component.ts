@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { AgregarCalificacionComponent } from '../../components/agregar-calificacion/agregar-calificacion.component';
 
 @Component({
   selector: 'app-calificaciones',
   imports: [
-    RouterLink
+    AgregarCalificacionComponent
   ],
   templateUrl: './calificaciones.component.html',
   styleUrl: './calificaciones.component.css'
 })
 export class CalificacionesComponent {
-    
+
 }

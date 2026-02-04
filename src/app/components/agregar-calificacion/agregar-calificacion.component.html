@@ -1,25 +1,61 @@
 <h2 style="text-align: center;">Captura de Calificaciones</h2>
 
-<form action="">
+<form [formGroup]="calificacionForm" (ngSubmit)="onSubmit()">
 
     <p>
-        Matricula: <input type="text" >
+        Matricula: <input type="text" formControlName="matricula">
+        @if (calificacionForm.get('matricula')?.invalid && calificacionForm.get('matricula')?.touched) {
+            <span style="color: red;">* Campo requerido</span>
+        }
     </p>
 
     <p>
-        Nombre: <input type="text" >
+        Nombre: <input type="text" formControlName="nombre">
+        @if (calificacionForm.get('nombre')?.invalid && calificacionForm.get('nombre')?.touched) {
+            <span style="color: red;">* Campo requerido</span>
+        }
     </p>
 
     <p>
-        Corte1: <input type="number" >
+        Corte1: <input type="number" formControlName="corte1">
+        @if (calificacionForm.get('corte1')?.invalid && calificacionForm.get('corte1')?.touched) {
+            <span style="color: red;">
+                @if (calificacionForm.get('corte1')?.errors?.['required']) {
+                    * Campo requerido
+                }
+                @if (calificacionForm.get('corte1')?.errors?.['min'] || calificacionForm.get('corte1')?.errors?.['max']) {
+                    * Debe estar entre 0 y 10
+                }
+            </span>
+        }
     </p>
 
     <p>
-        Corte2: <input type="number" >
+        Corte2: <input type="number" formControlName="corte2">
+        @if (calificacionForm.get('corte2')?.invalid && calificacionForm.get('corte2')?.touched) {
+            <span style="color: red;">
+                @if (calificacionForm.get('corte2')?.errors?.['required']) {
+                    * Campo requerido
+                }
+                @if (calificacionForm.get('corte2')?.errors?.['min'] || calificacionForm.get('corte2')?.errors?.['max']) {
+                    * Debe estar entre 0 y 10
+                }
+            </span>
+        }
     </p>
 
     <p>
-        Corte3: <input type="number" >
+        Corte3: <input type="number" formControlName="corte3">
+        @if (calificacionForm.get('corte3')?.invalid && calificacionForm.get('corte3')?.touched) {
+            <span style="color: red;">
+                @if (calificacionForm.get('corte3')?.errors?.['required']) {
+                    * Campo requerido
+                }
+                @if (calificacionForm.get('corte3')?.errors?.['min'] || calificacionForm.get('corte3')?.errors?.['max']) {
+                    * Debe estar entre 0 y 10
+                }
+            </span>
+        }
     </p>
 
     <div>
