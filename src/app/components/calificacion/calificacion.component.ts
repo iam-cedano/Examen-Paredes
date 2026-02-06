@@ -11,5 +11,5 @@ export class CalificacionComponent {
   public nombre = signal<string>('');
   public corte1 = signal<number>(0);
   public corte2 = signal<number>(0);
-  public corte3 = signal<number>(0);
+  public corte3 = signal<number>(0);  
 }
