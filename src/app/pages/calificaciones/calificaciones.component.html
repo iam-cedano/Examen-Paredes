@@ -1,1 +1,31 @@
-<app-agregar-calificacion></app-agregar-calificacion>
+<table border="1" style="text-align: center; margin: 0 auto;">
+  <thead>
+    <tr>
+      <th>Matrícula</th>
+      <th>Nombre</th>
+      <th>Corte 1</th>
+      <th>Corte 2</th>
+      <th>Corte 3</th>
+      <th>Eliminar</th>
+      <th>Seleccionar</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (cal of calificaciones(); track cal.matricula) {
+      <tr app-calificacion
+        [matricula]="cal.matricula"
+        [nombre]="cal.nombre"
+        [corte1]="cal.corte1"
+        [corte2]="cal.corte2"
+        [corte3]="cal.corte3"
+        (onEliminar)="eliminar($event)"
+        (onSeleccionar)="seleccionar($event)"
+      ></tr>
+    }
+  </tbody>
+</table>
+
+<app-agregar-calificacion
+  [calificacionSeleccionada]="calificacionSeleccionada()"
+  (agregarAlumno)="agregar($event)"
+></app-agregar-calificacion>

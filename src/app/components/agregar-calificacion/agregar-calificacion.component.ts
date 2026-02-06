@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class AgregarCalificacionComponent {
   calificacionForm: FormGroup;
 
+  public calificacionSeleccionada = input<any>(null);
+  public agregarAlumno = output<any>();
+
   constructor(private fb: FormBuilder) {
     this.calificacionForm = this.fb.group({
       matricula: ['', [Validators.required]],
@@ -18,18 +21,26 @@ export class AgregarCalificacionComponent {
       corte2: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
       corte3: ['', [Validators.required, Validators.min(0), Validators.max(10)]]
     });
+
+    effect(() => {
+      const data = this.calificacionSeleccionada();
+      if (data) {
+        this.calificacionForm.patchValue(data);
+      }
+    });
   }
 
   onSubmit() {
     if (this.calificacionForm.valid) {
-      console.log('Datos válidos:', this.calificacionForm.value);
-      // Aquí puedes procesar los datos
+      this.agregarAlumno.emit(this.calificacionForm.value);
     } else {
-      console.log('Formulario inválido');
-      // Marcar todos los campos como tocados para mostrar los errores
       Object.keys(this.calificacionForm.controls).forEach(key => {
         this.calificacionForm.get(key)?.markAsTouched();
       });
     }
+  }
+
+  onNuevo() {
+    this.calificacionForm.reset();
   }
 }

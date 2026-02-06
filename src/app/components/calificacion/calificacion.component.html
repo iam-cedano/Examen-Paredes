@@ -1,7 +1,7 @@
-<tr>
-  <td> {{matricula()}} </td>
-  <td> {{nombre()}} </td>
-  <td> {{corte1()}} </td>
-  <td> {{corte2()}} </td>
-  <td> {{corte3()}} </td>
-</tr>
+<td>{{ matricula() }}</td>
+<td>{{ nombre() }}</td>
+<td [style.color]="corte1() < 7 ? 'red' : ''">{{ corte1() }}</td>
+<td [style.color]="corte2() < 7 ? 'red' : ''">{{ corte2() }}</td>
+<td [style.color]="corte3() < 7 ? 'red' : ''">{{ corte3() }}</td>
+<td><button (click)="eliminar()">Eliminar</button></td>
+<td><button (click)="seleccionar()">Seleccionar</button></td>
